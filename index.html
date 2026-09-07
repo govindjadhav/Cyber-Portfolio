@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Govind Jadhav | Cybersecurity Engineer</title>
 
 <link rel="stylesheet" href="style.css">
@@ -30,7 +29,6 @@ gtag('config','G-6JRG0WKGDP');
 <header>
 
 <nav>
-
 <div class="logo">GJ</div>
 
 <div class="menu">
@@ -46,32 +44,25 @@ gtag('config','G-6JRG0WKGDP');
 
 <div class="hero-content">
 
-<div class="badge">
-Application Security • DevSecOps • Penetration Testing
-</div>
+<div class="badge">Application Security • DevSecOps • Penetration Testing</div>
 
 <h1>Govind Jadhav</h1>
 
 <h2 id="type"></h2>
 
 <p>
-Building secure applications, cloud infrastructure and DevSecOps pipelines with a strong focus on Application Security, Cloud Security and Offensive Security.
+Building secure applications, cloud infrastructure and DevSecOps pipelines with a focus on Application Security, Cloud Security and Offensive Security.
 </p>
 
 <div class="actions">
-
 <a href="#projects" class="btn">View Projects</a>
-
 <a href="#contact" class="ghost">Hire Me</a>
-
 </div>
 
 </div>
 
 <div class="hero-image">
-
 <img src="assets/profile.png" alt="Govind Jadhav" class="profile-img">
-
 </div>
 
 </section>
@@ -81,11 +72,11 @@ Building secure applications, cloud infrastructure and DevSecOps pipelines with 
 <main>
 
 <section id="about">
-
 <h3>About Me</h3>
 
 <p>
-Cybersecurity Engineer with expertise in Application Security, Vulnerability Assessment, Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
+Cybersecurity Engineer with expertise in Application Security, Vulnerability Assessment,
+Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 </p>
 
 </section>
@@ -116,27 +107,18 @@ Cybersecurity Engineer with expertise in Application Security, Vulnerability Ass
 <div class="grid">
 
 <div class="card">
-
 <h4>Secure CI/CD</h4>
-
 <p>Integrated SAST & DAST into Jenkins pipelines.</p>
-
 </div>
 
 <div class="card">
-
 <h4>Web App Pentest</h4>
-
 <p>OWASP Top 10 assessment using Burp Suite.</p>
-
 </div>
 
 <div class="card">
-
 <h4>AWS Hardening</h4>
-
 <p>IAM, VPC and Security Group review.</p>
-
 </div>
 
 </div>
@@ -150,35 +132,23 @@ Cybersecurity Engineer with expertise in Application Security, Vulnerability Ass
 <div class="contact">
 
 <div>
-
 <b>Email</b>
-
 <p>govindjadhav021@gmail.com</p>
-
 </div>
 
 <div>
-
 <b>Phone</b>
-
 <p>+91 8668532705</p>
-
 </div>
 
 <div>
-
 <b>GitHub</b>
-
 <p>github.com/govindjadhav</p>
-
 </div>
 
 <div>
-
 <b>LinkedIn</b>
-
 <p>linkedin.com/in/govind-jadhav-747b711ba</p>
-
 </div>
 
 </div>
@@ -201,29 +171,13 @@ Cybersecurity Engineer with expertise in Application Security, Vulnerability Ass
 If my cybersecurity research, portfolio, technical guidance or educational content has been valuable, you can support my ongoing work. Contributions help maintain security lab environments, cloud infrastructure, testing tools and continuous learning in Application Security and DevSecOps.
 </p>
 
-<div class="upi-box">
-
-<span>UPI ID</span>
-
-<strong>8668532705@ybl</strong>
-
-</div>
-
-<a href="upi://pay?pa=8668532705@ybl&pn=Govind%20Jadhav&cu=INR" class="btn">
-Support via UPI
-</a>
+<button class="btn" id="openPayment">
+Support Cybersecurity Research
+</button>
 
 <small>
 Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI applications.
 </small>
-
-</div>
-
-<div class="qr-box">
-
-<img src="assets/upi-qr.png" alt="UPI QR Code">
-
-<p>Scan & Support</p>
 
 </div>
 
@@ -239,7 +193,113 @@ Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI appli
 
 </footer>
 
+<!-- PAYMENT POPUP -->
+
+<div id="paymentModal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" id="closePayment">&times;</span>
+
+<h3>Support Cybersecurity Research</h3>
+
+<p class="modal-desc">
+Your support helps maintain security labs, cloud infrastructure, testing environments and continuous learning.
+</p>
+
+<img
+src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=upi://pay?pa=8668532705@ybl%26pn=Govind%20Jadhav%26cu=INR"
+alt="UPI QR Code"
+class="payment-qr">
+
+<div class="upi-modal-box">
+
+<span>UPI ID</span>
+
+<strong id="upiText">8668532705@ybl</strong>
+
+</div>
+
+<button class="copy-btn" id="copyUPI">
+Copy UPI ID
+</button>
+
+<p class="payment-note">
+Works with Google Pay, PhonePe, Paytm, BHIM and any UPI application.
+</p>
+
+</div>
+
+</div>
+
 <script src="script.js"></script>
+
+<script>
+
+const paymentModal=document.getElementById("paymentModal");
+const openPayment=document.getElementById("openPayment");
+const closePayment=document.getElementById("closePayment");
+const copyUPI=document.getElementById("copyUPI");
+
+openPayment.addEventListener("click",()=>{
+
+paymentModal.style.display="block";
+document.body.style.overflow="hidden";
+
+});
+
+function closeModal(){
+
+paymentModal.style.display="none";
+document.body.style.overflow="auto";
+
+}
+
+closePayment.addEventListener("click",closeModal);
+
+window.addEventListener("click",(e)=>{
+
+if(e.target===paymentModal){
+
+closeModal();
+
+}
+
+});
+
+window.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+closeModal();
+
+}
+
+});
+
+copyUPI.addEventListener("click",async()=>{
+
+try{
+
+await navigator.clipboard.writeText("8668532705@ybl");
+
+copyUPI.innerHTML="Copied ✓";
+
+setTimeout(()=>{
+
+copyUPI.innerHTML="Copy UPI ID";
+
+},2000);
+
+}catch{
+
+alert("UPI ID: 8668532705@ybl");
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
