@@ -29,15 +29,17 @@ gtag('config','G-6JRG0WKGDP');
 <header>
 
 <nav>
+
 <div class="logo">GJ</div>
 
 <div class="menu">
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
-<a href="#shodan">Shodan PDF</a>
+<a href="#resources">Resources</a>
 <a href="#contact">Contact</a>
 </div>
+
 </nav>
 
 <section class="hero">
@@ -71,7 +73,10 @@ Building secure applications, cloud infrastructure and DevSecOps pipelines with 
 
 <main>
 
+<!-- ABOUT -->
+
 <section id="about">
+
 <h3>About Me</h3>
 
 <p>
@@ -80,6 +85,8 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 </p>
 
 </section>
+
+<!-- SKILLS -->
 
 <section id="skills">
 
@@ -99,6 +106,8 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 </div>
 
 </section>
+
+<!-- PROJECTS -->
 
 <section id="projects">
 
@@ -125,45 +134,87 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 
 </section>
 
-<!-- SHODAN CHEATSHEET -->
+<!-- RESOURCES -->
 
-<section id="shodan">
+<section id="resources">
 
-<h3>Shodan Cheatsheet</h3>
+<h3>Cybersecurity Resources</h3>
 
-<div class="pdf-card">
-
-<div class="pdf-info">
-
-<div class="badge">Free Cybersecurity Resource</div>
-
-<h4>Shodan Cheatsheet</h4>
-
-<p>
-Complete Shodan search filters, ports, CVE searches, webcams, IoT devices,
-Industrial Systems, OSINT examples and practical commands.
+<p class="resource-title">
+Download free cybersecurity PDF guides.
 </p>
 
-<div class="pdf-area">
+<div class="resource-grid">
 
-<iframe src="assets/Shodan-Cheatsheet.pdf"></iframe>
-
-<a
-href="assets/Shodan-Cheatsheet.pdf"
-download="Shodan-Cheatsheet.pdf"
-class="btn download-btn">
-
-📥 Download Cheatsheet
-
-</a>
-
+<div class="resource-card">
+<div class="resource-icon"><icon name=shield color=info size=2xl/></div>
+<h4>Burp Suite</h4>
+<p>Web Application Testing Cheatsheet.</p>
+<button class="btn previewBtn" data-pdf="assets/Burp-Suite.pdf">Preview</button>
+<a href="assets/Burp-Suite.pdf" download class="ghost">Download</a>
 </div>
 
+<div class="resource-card">
+<div class="resource-icon"><icon name=search color=info size=2xl/></div>
+<h4>Nmap</h4>
+<p>Network Scanning Reference Guide.</p>
+<button class="btn previewBtn" data-pdf="assets/Nmap.pdf">Preview</button>
+<a href="assets/Nmap.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=globe color=info size=2xl/></div>
+<h4>Shodan</h4>
+<p>Complete Shodan Search Guide.</p>
+<button class="btn previewBtn" data-pdf="assets/Shodan-Cheatsheet.pdf">Preview</button>
+<a href="assets/Shodan-Cheatsheet.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=cloud color=info size=2xl/></div>
+<h4>AWS Security</h4>
+<p>AWS Security Best Practices.</p>
+<button class="btn previewBtn" data-pdf="assets/AWS-Security.pdf">Preview</button>
+<a href="assets/AWS-Security.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=container color=info size=2xl/></div>
+<h4>Docker</h4>
+<p>Docker Commands & Security Notes.</p>
+<button class="btn previewBtn" data-pdf="assets/Docker.pdf">Preview</button>
+<a href="assets/Docker.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=boxes color=info size=2xl/></div>
+<h4>Kubernetes</h4>
+<p>Kubernetes Commands & Security.</p>
+<button class="btn previewBtn" data-pdf="assets/Kubernetes.pdf">Preview</button>
+<a href="assets/Kubernetes.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=workflow color=info size=2xl/></div>
+<h4>Jenkins</h4>
+<p>CI/CD Quick Reference.</p>
+<button class="btn previewBtn" data-pdf="assets/Jenkins.pdf">Preview</button>
+<a href="assets/Jenkins.pdf" download class="ghost">Download</a>
+</div>
+
+<div class="resource-card">
+<div class="resource-icon"><icon name=server color=info size=2xl/></div>
+<h4>Terraform</h4>
+<p>Infrastructure as Code Guide.</p>
+<button class="btn previewBtn" data-pdf="assets/Terraform.pdf">Preview</button>
+<a href="assets/Terraform.pdf" download class="ghost">Download</a>
 </div>
 
 </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact">
 
@@ -208,7 +259,7 @@ class="btn download-btn">
 <h4>Support Security Research & Learning</h4>
 
 <p>
-If my cybersecurity research, portfolio, technical guidance or educational content has been valuable, you can support my ongoing work.
+If my cybersecurity research or educational content has helped you, you can support my work.
 </p>
 
 <button class="btn" id="openPayment">
@@ -228,10 +279,12 @@ Works with Google Pay, PhonePe, Paytm and BHIM.
 </main>
 
 <footer>
+
 © 2026 Govind Jadhav — Cybersecurity Engineer
+
 </footer>
 
-<!-- SUPPORT POPUP -->
+<!-- SUPPORT MODAL -->
 
 <div id="paymentModal" class="modal">
 
@@ -242,7 +295,7 @@ Works with Google Pay, PhonePe, Paytm and BHIM.
 <h3>Support Cybersecurity Research</h3>
 
 <p class="modal-desc">
-Support helps maintain labs and cybersecurity learning.
+Support helps maintain cybersecurity labs and learning resources.
 </p>
 
 <img
@@ -261,6 +314,20 @@ class="payment-qr">
 <button class="copy-btn" id="copyUPI">
 Copy UPI ID
 </button>
+
+</div>
+
+</div>
+
+<!-- PDF PREVIEW MODAL -->
+
+<div id="pdfModal" class="pdf-modal">
+
+<div class="pdf-modal-content">
+
+<span id="closePdf">&times;</span>
+
+<iframe id="pdfFrame"></iframe>
 
 </div>
 
