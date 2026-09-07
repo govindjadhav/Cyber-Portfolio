@@ -29,14 +29,17 @@ gtag('config','G-6JRG0WKGDP');
 <header>
 
 <nav>
+
 <div class="logo">GJ</div>
 
-<div class="menu">
+<div class="menu" id="menu">
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
+
+<div class="menu-toggle" id="menuToggle">&#9776;</div>
 
 </nav>
 
@@ -155,8 +158,6 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 
 </section>
 
-<!-- SUPPORT SECTION -->
-
 <section id="support">
 
 <h3>Support Cybersecurity Research</h3>
@@ -192,8 +193,6 @@ Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI appli
 © 2026 Govind Jadhav — Cybersecurity Engineer
 
 </footer>
-
-<!-- PAYMENT POPUP -->
 
 <div id="paymentModal" class="modal">
 
@@ -242,61 +241,48 @@ const closePayment=document.getElementById("closePayment");
 const copyUPI=document.getElementById("copyUPI");
 
 openPayment.addEventListener("click",()=>{
-
 paymentModal.style.display="block";
 document.body.style.overflow="hidden";
-
 });
 
 function closeModal(){
-
 paymentModal.style.display="none";
 document.body.style.overflow="auto";
-
 }
 
 closePayment.addEventListener("click",closeModal);
 
 window.addEventListener("click",(e)=>{
-
 if(e.target===paymentModal){
-
 closeModal();
-
 }
-
 });
 
 window.addEventListener("keydown",(e)=>{
-
 if(e.key==="Escape"){
-
 closeModal();
-
 }
-
 });
 
 copyUPI.addEventListener("click",async()=>{
-
 try{
-
 await navigator.clipboard.writeText("8668532705@ybl");
-
 copyUPI.innerHTML="Copied ✓";
-
 setTimeout(()=>{
-
 copyUPI.innerHTML="Copy UPI ID";
-
 },2000);
-
 }catch{
-
 alert("UPI ID: 8668532705@ybl");
-
 }
+});
 
+/* Mobile Menu */
+
+const menuToggle=document.getElementById("menuToggle");
+const menu=document.getElementById("menu");
+
+menuToggle.addEventListener("click",()=>{
+menu.classList.toggle("show");
 });
 
 </script>
