@@ -1,8 +1,6 @@
-/* =========================================
-   GOVIND JADHAV PORTFOLIO SCRIPT
-========================================= */
-
-/* ========= Typing Animation ========= */
+/* =========================
+   Typing Animation
+========================= */
 
 const roles=[
 "Cybersecurity Engineer",
@@ -25,10 +23,9 @@ const typingElement=document.getElementById("type");
 
 function typingEffect(){
 
-if(!typingElement) return;
+if(!typingElement)return;
 
-typingElement.textContent=
-roles[roleIndex].substring(0,charIndex);
+typingElement.textContent=roles[roleIndex].substring(0,charIndex);
 
 if(!deleting){
 
@@ -51,7 +48,6 @@ charIndex--;
 if(charIndex===0){
 
 deleting=false;
-
 roleIndex=(roleIndex+1)%roles.length;
 
 }
@@ -64,7 +60,9 @@ setTimeout(typingEffect,deleting?50:90);
 
 typingEffect();
 
-/* ========= Cyber Background ========= */
+/* =========================
+   Cyber Background
+========================= */
 
 const canvas=document.getElementById("bg");
 
@@ -120,7 +118,7 @@ const dist=Math.hypot(dx,dy);
 
 if(dist<120){
 
-ctx.strokeStyle=`rgba(94,234,212,${(1-dist/120)*.25})`;
+ctx.strokeStyle=`rgba(94,234,212,${(1-dist/120)*0.25})`;
 
 ctx.beginPath();
 
@@ -143,7 +141,9 @@ animate();
 
 }
 
-/* ========= Support Popup ========= */
+/* =========================
+   Support Popup
+========================= */
 
 const paymentModal=document.getElementById("paymentModal");
 const openPayment=document.getElementById("openPayment");
@@ -161,20 +161,16 @@ document.body.style.overflow="hidden";
 
 }
 
-function closeSupport(){
-
-if(paymentModal){
+function closeModal(){
 
 paymentModal.style.display="none";
 document.body.style.overflow="auto";
 
 }
 
-}
-
 if(closePayment){
 
-closePayment.onclick=closeSupport;
+closePayment.onclick=closeModal;
 
 }
 
@@ -182,7 +178,7 @@ window.addEventListener("click",e=>{
 
 if(e.target===paymentModal){
 
-closeSupport();
+closeModal();
 
 }
 
@@ -192,7 +188,7 @@ window.addEventListener("keydown",e=>{
 
 if(e.key==="Escape"){
 
-closeSupport();
+closeModal();
 
 }
 
@@ -224,94 +220,9 @@ alert("UPI ID: 8668532705@ybl");
 
 }
 
-/* =========================================
-   SHODAN CHEATSHEET PREMIUM
-========================================= */
-
-const payShodan=document.getElementById("payShodan");
-const verifyPayment=document.getElementById("verifyPayment");
-const transactionId=document.getElementById("transactionId");
-const pdfArea=document.getElementById("pdfArea");
-
-/* Cloudflare Worker URL */
-const WORKER_URL="https://YOUR-WORKER.workers.dev/verify";
-
-if(payShodan){
-
-payShodan.onclick=()=>{
-
-const upi=`upi://pay?pa=8668532705@ybl&pn=Govind%20Jadhav&am=5&cu=INR&tn=Shodan%20Cheatsheet`;
-
-window.location.href=upi;
-
-};
-
-}
-
-if(verifyPayment){
-
-verifyPayment.onclick=async()=>{
-
-const txn=transactionId.value.trim();
-
-if(txn===""){
-
-alert("Please enter your UPI Transaction ID.");
-
-return;
-
-}
-
-verifyPayment.innerHTML="Verifying...";
-verifyPayment.disabled=true;
-
-try{
-
-const response=await fetch(WORKER_URL,{
-
-method:"POST",
-
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify({
-transactionId:txn
-})
-
-});
-
-const result=await response.json();
-
-if(result.success){
-
-pdfArea.style.display="block";
-
-verifyPayment.innerHTML="Verified ✓";
-
-}else{
-
-alert(result.message||"Payment not verified.");
-
-verifyPayment.innerHTML="Verify Payment";
-verifyPayment.disabled=false;
-
-}
-
-}catch(error){
-
-alert("Verification server unavailable.");
-
-verifyPayment.innerHTML="Verify Payment";
-verifyPayment.disabled=false;
-
-}
-
-};
-
-}
-
-/* ========= Smooth Section Animation ========= */
+/* =========================
+   Fade Animation
+========================= */
 
 const observer=new IntersectionObserver(entries=>{
 
