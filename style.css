@@ -214,7 +214,7 @@ border:1px solid rgba(255,255,255,.08);
 color:#00E5FF;
 }
 
-/* ================= SHODAN PDF ================= */
+/* ================= SHODAN CHEATSHEET ================= */
 
 .pdf-card{
 background:rgba(255,255,255,.05);
@@ -230,13 +230,13 @@ overflow:hidden;
 .pdf-card::before{
 content:"";
 position:absolute;
-top:-80px;
-right:-80px;
-width:180px;
-height:180px;
+top:-70px;
+right:-70px;
+width:170px;
+height:170px;
 background:rgba(0,229,255,.08);
 border-radius:50%;
-filter:blur(20px);
+filter:blur(18px);
 }
 
 .pdf-info{
@@ -249,82 +249,20 @@ font-size:32px;
 margin-bottom:15px;
 }
 
-.pdf-subtitle{
-color:#8ea0b8;
-margin-top:-8px;
+.pdf-info p{
+line-height:1.8;
+color:#cfd3dc;
 margin-bottom:20px;
-}
-
-.price-box{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-margin:25px 0;
-flex-wrap:wrap;
-}
-
-.price-tag{
-background:#00E5FF;
-color:black;
-padding:12px 20px;
-border-radius:12px;
-font-weight:800;
-font-size:18px;
-}
-
-.secure-text{
-color:#8ea0b8;
-font-size:14px;
-}
-
-.verify-box{
-margin-top:25px;
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-.verify-box label{
-font-size:14px;
-color:#00E5FF;
-}
-
-.verify-box input{
-background:#08111f;
-border:1px solid rgba(0,229,255,.25);
-border-radius:12px;
-padding:15px;
-color:white;
-font-size:15px;
-outline:none;
-}
-
-.verify-box input:focus{
-border-color:#00E5FF;
-box-shadow:0 0 20px rgba(0,229,255,.15);
 }
 
 .pdf-area{
-display:none;
-margin-top:30px;
-animation:fadeIn .5s ease;
-}
-
-.success-box{
-background:rgba(34,197,94,.12);
-border:1px solid rgba(34,197,94,.35);
-padding:15px;
-border-radius:12px;
-color:#4ade80;
-font-weight:700;
-margin-bottom:20px;
-text-align:center;
+display:block;
+margin-top:25px;
 }
 
 .pdf-area iframe{
 width:100%;
-height:550px;
+height:560px;
 border:none;
 border-radius:16px;
 background:white;
@@ -333,17 +271,6 @@ background:white;
 .download-btn{
 display:inline-block;
 margin-top:20px;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(10px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 /* ================= SUPPORT ================= */
@@ -441,6 +368,12 @@ font-weight:700;
 cursor:pointer;
 }
 
+footer{
+text-align:center;
+padding:40px;
+color:#8ea0b8;
+}
+
 /* ================= TABLET ================= */
 
 @media(max-width:900px){
@@ -470,10 +403,6 @@ justify-content:center;
 max-width:300px;
 }
 
-.price-box{
-justify-content:center;
-}
-
 }
 
 /* ================= MOBILE ================= */
@@ -489,7 +418,6 @@ margin-bottom:20px;
 }
 
 .menu{
-display:flex;
 gap:12px;
 font-size:13px;
 flex-wrap:wrap;
@@ -508,6 +436,12 @@ font-size:48px;
 
 .hero h2{
 font-size:26px;
+min-height:34px;
+}
+
+.hero p{
+font-size:15px;
+line-height:1.7;
 }
 
 .profile-img{
