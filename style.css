@@ -24,19 +24,22 @@ height:100%;
 z-index:-1;
 }
 
+/* ================= NAVBAR ================= */
+
 header{
-padding:25px 10%;
+padding:20px 7%;
 }
 
 nav{
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:70px;
+margin-bottom:35px;
+position:relative;
 }
 
 .logo{
-font-size:30px;
+font-size:32px;
 font-weight:800;
 color:#00E5FF;
 }
@@ -44,24 +47,36 @@ color:#00E5FF;
 .menu{
 display:flex;
 gap:30px;
+align-items:center;
 }
 
 .menu a{
 color:white;
 text-decoration:none;
 transition:.3s;
+font-size:15px;
 }
 
 .menu a:hover{
 color:#00E5FF;
 }
 
+.menu-toggle{
+display:none;
+font-size:30px;
+cursor:pointer;
+color:#00E5FF;
+}
+
+/* ================= HERO ================= */
+
 .hero{
 display:flex;
 justify-content:space-between;
 align-items:center;
-gap:50px;
-min-height:80vh;
+gap:60px;
+min-height:calc(100vh - 90px);
+padding:15px 0 25px;
 }
 
 .hero-content{
@@ -75,26 +90,30 @@ border-radius:30px;
 background:rgba(0,229,255,.12);
 border:1px solid rgba(0,229,255,.35);
 color:#00E5FF;
-margin-bottom:25px;
+margin-bottom:22px;
+font-size:14px;
 }
 
 .hero h1{
-font-size:64px;
+font-size:68px;
 font-weight:800;
+line-height:1.05;
 margin-bottom:10px;
 }
 
 .hero h2{
-font-size:30px;
+font-size:34px;
 color:#00E5FF;
-min-height:40px;
+min-height:42px;
+margin-bottom:10px;
 }
 
 .hero p{
-margin-top:25px;
+margin-top:20px;
 line-height:1.8;
 color:#cfd3dc;
 max-width:600px;
+font-size:17px;
 }
 
 .actions{
@@ -132,29 +151,35 @@ background:transparent;
 
 .ghost:hover{
 border-color:#00E5FF;
+color:#00E5FF;
 }
 
 .hero-image{
 flex:1;
 display:flex;
 justify-content:center;
+align-items:center;
 }
 
 .profile-img{
-width:340px;
-height:420px;
+width:100%;
+max-width:360px;
+height:auto;
+aspect-ratio:4/5;
 object-fit:cover;
-border-radius:25px;
-border:3px solid rgba(0,229,255,.35);
-box-shadow:0 20px 60px rgba(0,229,255,.15);
+border-radius:26px;
+border:2px solid rgba(0,229,255,.35);
+box-shadow:0 20px 60px rgba(0,229,255,.18);
 }
 
+/* ================= SECTIONS ================= */
+
 main section{
-padding:90px 10%;
+padding:90px 7%;
 }
 
 section h3{
-font-size:38px;
+font-size:40px;
 margin-bottom:35px;
 }
 
@@ -176,6 +201,7 @@ backdrop-filter:blur(15px);
 .card:hover{
 transform:translateY(-8px);
 border-color:#00E5FF;
+box-shadow:0 12px 30px rgba(0,229,255,.15);
 }
 
 .contact{
@@ -201,7 +227,7 @@ padding:40px;
 color:#8ea0b8;
 }
 
-/* SUPPORT */
+/* ================= SUPPORT ================= */
 
 .support-card{
 background:rgba(255,255,255,.05);
@@ -229,7 +255,7 @@ margin-top:18px;
 color:#8ea0b8;
 }
 
-/* PAYMENT POPUP */
+/* ================= PAYMENT POPUP ================= */
 
 .modal{
 display:none;
@@ -322,53 +348,113 @@ font-size:14px;
 color:#8ea0b8;
 }
 
+/* ================= TABLET ================= */
+
 @media(max-width:900px){
+
+header{
+padding:18px 5%;
+}
 
 .hero{
 flex-direction:column-reverse;
 text-align:center;
+min-height:auto;
+padding-top:10px;
+gap:35px;
 }
 
 .hero p{
 margin:auto;
-margin-top:20px;
+margin-top:18px;
 }
 
 .actions{
 justify-content:center;
 }
 
+.profile-img{
+max-width:300px;
 }
+
+}
+
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
-.hero h1{
-font-size:44px;
+header{
+padding:15px 20px;
 }
 
-.hero h2{
-font-size:24px;
-}
-
-.profile-img{
-width:260px;
-height:320px;
+nav{
+margin-bottom:20px;
 }
 
 .menu{
-gap:15px;
-font-size:14px;
+display:flex;
+gap:12px;
+font-size:13px;
 flex-wrap:wrap;
-justify-content:center;
+justify-content:flex-end;
+}
+
+.hero{
+min-height:auto;
+padding:10px 0 20px;
+gap:25px;
+}
+
+.badge{
+font-size:12px;
+padding:8px 14px;
+margin-bottom:16px;
+}
+
+.hero h1{
+font-size:48px;
+line-height:1.05;
+}
+
+.hero h2{
+font-size:26px;
+min-height:34px;
+}
+
+.hero p{
+font-size:15px;
+line-height:1.7;
+}
+
+.profile-img{
+max-width:240px;
+}
+
+.actions{
+gap:12px;
+}
+
+.btn,.ghost{
+padding:13px 20px;
+font-size:14px;
+}
+
+main section{
+padding:65px 20px;
+}
+
+section h3{
+font-size:32px;
 }
 
 .modal-content{
 margin:15% 15px;
+padding:24px;
 }
 
 .payment-qr{
-width:220px;
-height:220px;
+width:210px;
+height:210px;
 }
 
 }
