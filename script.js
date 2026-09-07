@@ -6,61 +6,58 @@
    Typing Animation
 ========================= */
 
-const roles=[
-"Cybersecurity Engineer",
-"Application Security",
-"DevSecOps Engineer",
-"Penetration Tester",
-"Cloud Security Engineer",
-"SOC Analyst",
-"Ethical Hacker",
-"Red Team Operator",
-"Blue Team Analyst",
-"Bug Bounty Hunter"
+const roles = [
+  "Cybersecurity Engineer",
+  "Application Security",
+  "DevSecOps Engineer",
+  "Penetration Tester",
+  "Cloud Security Engineer",
+  "SOC Analyst",
+  "Ethical Hacker",
+  "Red Team Operator",
+  "Blue Team Analyst",
+  "Bug Bounty Hunter"
 ];
 
-let roleIndex=0;
-let charIndex=0;
-let deleting=false;
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-const typingElement=document.getElementById("type");
+const typingElement = document.getElementById("type");
 
 function typingEffect(){
 
-if(!typingElement)return;
+  if(!typingElement) return;
 
-typingElement.textContent=
-roles[roleIndex].substring(0,charIndex);
+  typingElement.textContent =
+  roles[roleIndex].substring(0,charIndex);
 
-if(!deleting){
+  if(!deleting){
 
-charIndex++;
+    charIndex++;
 
-if(charIndex>roles[roleIndex].length){
+    if(charIndex > roles[roleIndex].length){
 
-deleting=true;
+      deleting = true;
+      setTimeout(typingEffect,1000);
+      return;
 
-setTimeout(typingEffect,1000);
+    }
 
-return;
+  }else{
 
-}
+    charIndex--;
 
-}else{
+    if(charIndex===0){
 
-charIndex--;
+      deleting=false;
+      roleIndex=(roleIndex+1)%roles.length;
 
-if(charIndex===0){
+    }
 
-deleting=false;
+  }
 
-roleIndex=(roleIndex+1)%roles.length;
-
-}
-
-}
-
-setTimeout(typingEffect,deleting?45:85);
+  setTimeout(typingEffect,deleting?45:85);
 
 }
 
@@ -93,8 +90,8 @@ const particles=Array.from({length:PARTICLE_COUNT},()=>({
 
 x:Math.random()*window.innerWidth,
 y:Math.random()*window.innerHeight,
-vx:(Math.random()-.5)*0.5,
-vy:(Math.random()-.5)*0.5
+vx:(Math.random()-.5)*0.45,
+vy:(Math.random()-.5)*0.45
 
 }));
 
@@ -112,7 +109,9 @@ p.y+=p.vy;
 if(p.x<0||p.x>canvas.width)p.vx*=-1;
 if(p.y<0||p.y>canvas.height)p.vy*=-1;
 
-ctx.fillRect(p.x,p.y,2,2);
+ctx.beginPath();
+ctx.arc(p.x,p.y,1.5,0,Math.PI*2);
+ctx.fill();
 
 });
 
@@ -122,21 +121,17 @@ for(let j=i+1;j<particles.length;j++){
 
 const dx=particles[i].x-particles[j].x;
 const dy=particles[i].y-particles[j].y;
-
 const distance=Math.hypot(dx,dy);
 
 if(distance<120){
 
 ctx.strokeStyle=`rgba(94,234,212,${
-(1-distance/120)*0.25
+(1-distance/120)*0.22
 })`;
 
 ctx.beginPath();
-
 ctx.moveTo(particles[i].x,particles[i].y);
-
 ctx.lineTo(particles[j].x,particles[j].y);
-
 ctx.stroke();
 
 }
@@ -165,12 +160,8 @@ document.querySelectorAll(".previewBtn").forEach(btn=>{
 
 btn.addEventListener("click",()=>{
 
-const pdf=btn.dataset.pdf;
-
-pdfFrame.src=pdf;
-
+pdfFrame.src=btn.dataset.pdf;
 pdfModal.style.display="block";
-
 document.body.style.overflow="hidden";
 
 });
@@ -180,9 +171,7 @@ document.body.style.overflow="hidden";
 function closePDF(){
 
 pdfModal.style.display="none";
-
 pdfFrame.src="";
-
 document.body.style.overflow="auto";
 
 }
@@ -227,7 +216,6 @@ if(openPayment){
 openPayment.onclick=()=>{
 
 paymentModal.style.display="block";
-
 document.body.style.overflow="hidden";
 
 };
@@ -237,7 +225,6 @@ document.body.style.overflow="hidden";
 function closeSupport(){
 
 paymentModal.style.display="none";
-
 document.body.style.overflow="auto";
 
 }
@@ -251,16 +238,6 @@ closePayment.onclick=closeSupport;
 window.addEventListener("click",e=>{
 
 if(e.target===paymentModal){
-
-closeSupport();
-
-}
-
-});
-
-window.addEventListener("keydown",e=>{
-
-if(e.key==="Escape"){
 
 closeSupport();
 
@@ -305,7 +282,6 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){
 
 entry.target.style.opacity="1";
-
 entry.target.style.transform="translateY(0)";
 
 }
@@ -325,7 +301,7 @@ observer.observe(sec);
 });
 
 /* =========================
-   Resource Card Hover Glow
+   Resource Card Glow
 ========================= */
 
 document.querySelectorAll(".resource-card").forEach(card=>{
@@ -340,13 +316,51 @@ const y=e.clientY-rect.top;
 card.style.background=
 `radial-gradient(circle at ${x}px ${y}px,
 rgba(0,229,255,.12),
-rgba(255,255,255,.05))`;
+#07101f)`;
 
 });
 
 card.addEventListener("mouseleave",()=>{
 
-card.style.background="rgba(255,255,255,.05)";
+card.style.background="linear-gradient(180deg,#0b1325,#07101f)";
+
+});
+
+});
+
+/* =========================
+   Active Navbar Link
+========================= */
+
+const sections=document.querySelectorAll("main section");
+
+const navLinks=document.querySelectorAll(".menu a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(sec=>{
+
+const top=sec.offsetTop-120;
+
+if(pageYOffset>=top){
+
+current=sec.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
 
 });
 
