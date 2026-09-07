@@ -32,14 +32,13 @@ gtag('config','G-6JRG0WKGDP');
 
 <div class="logo">GJ</div>
 
-<div class="menu" id="menu">
+<div class="menu">
 <a href="#about">About</a>
 <a href="#skills">Skills</a>
 <a href="#projects">Projects</a>
+<a href="#shodan">Shodan PDF</a>
 <a href="#contact">Contact</a>
 </div>
-
-<div class="menu-toggle" id="menuToggle">&#9776;</div>
 
 </nav>
 
@@ -75,6 +74,7 @@ Building secure applications, cloud infrastructure and DevSecOps pipelines with 
 <main>
 
 <section id="about">
+
 <h3>About Me</h3>
 
 <p>
@@ -128,6 +128,76 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 
 </section>
 
+<!-- SHODAN PREMIUM SECTION -->
+
+<section id="shodan">
+
+<h3>Premium Resource</h3>
+
+<div class="pdf-card">
+
+<div class="pdf-info">
+
+<div class="badge">Exclusive Cybersecurity Guide</div>
+
+<h4>Shodan Cheatsheet</h4>
+
+<p>
+Complete Shodan search filters, ports, CVE searches, webcams,
+IoT devices, Industrial Systems, OSINT examples and practical commands.
+</p>
+
+<div class="price-box">
+<div class="price-tag">₹5 Only</div>
+<div class="secure-text">Google Pay Secure Payment</div>
+</div>
+
+<button class="btn" id="payShodan">
+Pay ₹5 with Google Pay
+</button>
+
+<div class="verify-box">
+
+<label>UPI Transaction ID</label>
+
+<input
+type="text"
+id="transactionId"
+placeholder="Example: 432187654321">
+
+<button class="ghost" id="verifyPayment">
+Verify Payment
+</button>
+
+</div>
+
+<div id="pdfArea" class="pdf-area">
+
+<div class="success-box">
+
+✔ Payment Verified
+
+</div>
+
+<iframe src="assets/Shodan-Cheatsheet.pdf"></iframe>
+
+<a
+href="assets/Shodan-Cheatsheet.pdf"
+download="Shodan-Cheatsheet.pdf"
+class="btn download-btn">
+
+Download PDF
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
 <section id="contact">
 
 <h3>Contact</h3>
@@ -169,7 +239,7 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 <h4>Support Security Research & Learning</h4>
 
 <p>
-If my cybersecurity research, portfolio, technical guidance or educational content has been valuable, you can support my ongoing work. Contributions help maintain security lab environments, cloud infrastructure, testing tools and continuous learning in Application Security and DevSecOps.
+If my cybersecurity research, portfolio, technical guidance or educational content has been valuable, you can support my ongoing work.
 </p>
 
 <button class="btn" id="openPayment">
@@ -194,6 +264,8 @@ Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI appli
 
 </footer>
 
+<!-- SUPPORT PAYMENT MODAL -->
+
 <div id="paymentModal" class="modal">
 
 <div class="modal-content">
@@ -215,17 +287,13 @@ class="payment-qr">
 
 <span>UPI ID</span>
 
-<strong id="upiText">8668532705@ybl</strong>
+<strong>8668532705@ybl</strong>
 
 </div>
 
 <button class="copy-btn" id="copyUPI">
 Copy UPI ID
 </button>
-
-<p class="payment-note">
-Works with Google Pay, PhonePe, Paytm, BHIM and any UPI application.
-</p>
 
 </div>
 
@@ -235,55 +303,64 @@ Works with Google Pay, PhonePe, Paytm, BHIM and any UPI application.
 
 <script>
 
+/* Support Popup */
+
 const paymentModal=document.getElementById("paymentModal");
 const openPayment=document.getElementById("openPayment");
 const closePayment=document.getElementById("closePayment");
 const copyUPI=document.getElementById("copyUPI");
 
-openPayment.addEventListener("click",()=>{
+openPayment.onclick=()=>{
 paymentModal.style.display="block";
-document.body.style.overflow="hidden";
-});
+};
 
-function closeModal(){
+closePayment.onclick=()=>{
 paymentModal.style.display="none";
-document.body.style.overflow="auto";
-}
+};
 
-closePayment.addEventListener("click",closeModal);
-
-window.addEventListener("click",(e)=>{
+window.onclick=(e)=>{
 if(e.target===paymentModal){
-closeModal();
+paymentModal.style.display="none";
 }
-});
+};
 
-window.addEventListener("keydown",(e)=>{
-if(e.key==="Escape"){
-closeModal();
-}
-});
-
-copyUPI.addEventListener("click",async()=>{
+copyUPI.onclick=async()=>{
 try{
 await navigator.clipboard.writeText("8668532705@ybl");
 copyUPI.innerHTML="Copied ✓";
-setTimeout(()=>{
-copyUPI.innerHTML="Copy UPI ID";
-},2000);
-}catch{
-alert("UPI ID: 8668532705@ybl");
+setTimeout(()=>copyUPI.innerHTML="Copy UPI ID",2000);
+}catch{}
+};
+
+/* Shodan Payment */
+
+document.getElementById("payShodan").onclick=()=>{
+
+window.location.href=
+"upi://pay?pa=8668532705@ybl&pn=Govind%20Jadhav&am=5&cu=INR&tn=Shodan%20Cheatsheet";
+
+};
+
+/* Verification */
+
+document.getElementById("verifyPayment").onclick=async()=>{
+
+const txn=document.getElementById("transactionId").value.trim();
+
+if(!txn){
+
+alert("Please enter Transaction ID.");
+
+return;
+
 }
-});
 
-/* Mobile Menu */
+/* Cloudflare Worker verification
+   next file (script.js) me backend call add hoga */
 
-const menuToggle=document.getElementById("menuToggle");
-const menu=document.getElementById("menu");
+alert("Verification system next file me configure hoga.");
 
-menuToggle.addEventListener("click",()=>{
-menu.classList.toggle("show");
-});
+};
 
 </script>
 
