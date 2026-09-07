@@ -29,7 +29,6 @@ gtag('config','G-6JRG0WKGDP');
 <header>
 
 <nav>
-
 <div class="logo">GJ</div>
 
 <div class="menu">
@@ -39,7 +38,6 @@ gtag('config','G-6JRG0WKGDP');
 <a href="#shodan">Shodan PDF</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
 
 <section class="hero">
@@ -74,7 +72,6 @@ Building secure applications, cloud infrastructure and DevSecOps pipelines with 
 <main>
 
 <section id="about">
-
 <h3>About Me</h3>
 
 <p>
@@ -128,56 +125,26 @@ Penetration Testing, AWS Security, Docker, Kubernetes, Jenkins and DevSecOps.
 
 </section>
 
-<!-- SHODAN PREMIUM SECTION -->
+<!-- SHODAN CHEATSHEET -->
 
 <section id="shodan">
 
-<h3>Premium Resource</h3>
+<h3>Shodan Cheatsheet</h3>
 
 <div class="pdf-card">
 
 <div class="pdf-info">
 
-<div class="badge">Exclusive Cybersecurity Guide</div>
+<div class="badge">Free Cybersecurity Resource</div>
 
 <h4>Shodan Cheatsheet</h4>
 
 <p>
-Complete Shodan search filters, ports, CVE searches, webcams,
-IoT devices, Industrial Systems, OSINT examples and practical commands.
+Complete Shodan search filters, ports, CVE searches, webcams, IoT devices,
+Industrial Systems, OSINT examples and practical commands.
 </p>
 
-<div class="price-box">
-<div class="price-tag">₹5 Only</div>
-<div class="secure-text">Google Pay Secure Payment</div>
-</div>
-
-<button class="btn" id="payShodan">
-Pay ₹5 with Google Pay
-</button>
-
-<div class="verify-box">
-
-<label>UPI Transaction ID</label>
-
-<input
-type="text"
-id="transactionId"
-placeholder="Example: 432187654321">
-
-<button class="ghost" id="verifyPayment">
-Verify Payment
-</button>
-
-</div>
-
-<div id="pdfArea" class="pdf-area">
-
-<div class="success-box">
-
-✔ Payment Verified
-
-</div>
+<div class="pdf-area">
 
 <iframe src="assets/Shodan-Cheatsheet.pdf"></iframe>
 
@@ -186,7 +153,7 @@ href="assets/Shodan-Cheatsheet.pdf"
 download="Shodan-Cheatsheet.pdf"
 class="btn download-btn">
 
-Download PDF
+📥 Download Cheatsheet
 
 </a>
 
@@ -228,6 +195,8 @@ Download PDF
 
 </section>
 
+<!-- SUPPORT -->
+
 <section id="support">
 
 <h3>Support Cybersecurity Research</h3>
@@ -247,7 +216,7 @@ Support Cybersecurity Research
 </button>
 
 <small>
-Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI applications.
+Works with Google Pay, PhonePe, Paytm and BHIM.
 </small>
 
 </div>
@@ -259,12 +228,10 @@ Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI appli
 </main>
 
 <footer>
-
 © 2026 Govind Jadhav — Cybersecurity Engineer
-
 </footer>
 
-<!-- SUPPORT PAYMENT MODAL -->
+<!-- SUPPORT POPUP -->
 
 <div id="paymentModal" class="modal">
 
@@ -275,12 +242,12 @@ Secure UPI payments through Google Pay, PhonePe, Paytm, BHIM and other UPI appli
 <h3>Support Cybersecurity Research</h3>
 
 <p class="modal-desc">
-Your support helps maintain security labs, cloud infrastructure, testing environments and continuous learning.
+Support helps maintain labs and cybersecurity learning.
 </p>
 
 <img
 src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=upi://pay?pa=8668532705@ybl%26pn=Govind%20Jadhav%26cu=INR"
-alt="UPI QR Code"
+alt="UPI QR"
 class="payment-qr">
 
 <div class="upi-modal-box">
@@ -300,69 +267,6 @@ Copy UPI ID
 </div>
 
 <script src="script.js"></script>
-
-<script>
-
-/* Support Popup */
-
-const paymentModal=document.getElementById("paymentModal");
-const openPayment=document.getElementById("openPayment");
-const closePayment=document.getElementById("closePayment");
-const copyUPI=document.getElementById("copyUPI");
-
-openPayment.onclick=()=>{
-paymentModal.style.display="block";
-};
-
-closePayment.onclick=()=>{
-paymentModal.style.display="none";
-};
-
-window.onclick=(e)=>{
-if(e.target===paymentModal){
-paymentModal.style.display="none";
-}
-};
-
-copyUPI.onclick=async()=>{
-try{
-await navigator.clipboard.writeText("8668532705@ybl");
-copyUPI.innerHTML="Copied ✓";
-setTimeout(()=>copyUPI.innerHTML="Copy UPI ID",2000);
-}catch{}
-};
-
-/* Shodan Payment */
-
-document.getElementById("payShodan").onclick=()=>{
-
-window.location.href=
-"upi://pay?pa=8668532705@ybl&pn=Govind%20Jadhav&am=5&cu=INR&tn=Shodan%20Cheatsheet";
-
-};
-
-/* Verification */
-
-document.getElementById("verifyPayment").onclick=async()=>{
-
-const txn=document.getElementById("transactionId").value.trim();
-
-if(!txn){
-
-alert("Please enter Transaction ID.");
-
-return;
-
-}
-
-/* Cloudflare Worker verification
-   next file (script.js) me backend call add hoga */
-
-alert("Verification system next file me configure hoga.");
-
-};
-
-</script>
 
 </body>
 </html>
