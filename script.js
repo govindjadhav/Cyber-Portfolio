@@ -1,3 +1,7 @@
+/* =========================================
+   GOVIND JADHAV PORTFOLIO - FINAL SCRIPT
+========================================= */
+
 /* =========================
    Typing Animation
 ========================= */
@@ -25,7 +29,8 @@ function typingEffect(){
 
 if(!typingElement)return;
 
-typingElement.textContent=roles[roleIndex].substring(0,charIndex);
+typingElement.textContent=
+roles[roleIndex].substring(0,charIndex);
 
 if(!deleting){
 
@@ -48,20 +53,21 @@ charIndex--;
 if(charIndex===0){
 
 deleting=false;
+
 roleIndex=(roleIndex+1)%roles.length;
 
 }
 
 }
 
-setTimeout(typingEffect,deleting?50:90);
+setTimeout(typingEffect,deleting?45:85);
 
 }
 
 typingEffect();
 
 /* =========================
-   Cyber Background
+   Cyber Background Animation
 ========================= */
 
 const canvas=document.getElementById("bg");
@@ -81,7 +87,9 @@ resizeCanvas();
 
 window.addEventListener("resize",resizeCanvas);
 
-const particles=Array.from({length:90},()=>({
+const PARTICLE_COUNT=85;
+
+const particles=Array.from({length:PARTICLE_COUNT},()=>({
 
 x:Math.random()*window.innerWidth,
 y:Math.random()*window.innerHeight,
@@ -90,7 +98,7 @@ vy:(Math.random()-.5)*0.5
 
 }));
 
-function animate(){
+function animateBackground(){
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
@@ -114,15 +122,19 @@ for(let j=i+1;j<particles.length;j++){
 
 const dx=particles[i].x-particles[j].x;
 const dy=particles[i].y-particles[j].y;
-const dist=Math.hypot(dx,dy);
 
-if(dist<120){
+const distance=Math.hypot(dx,dy);
 
-ctx.strokeStyle=`rgba(94,234,212,${(1-dist/120)*0.25})`;
+if(distance<120){
+
+ctx.strokeStyle=`rgba(94,234,212,${
+(1-distance/120)*0.25
+})`;
 
 ctx.beginPath();
 
 ctx.moveTo(particles[i].x,particles[i].y);
+
 ctx.lineTo(particles[j].x,particles[j].y);
 
 ctx.stroke();
@@ -133,13 +145,73 @@ ctx.stroke();
 
 }
 
-requestAnimationFrame(animate);
+requestAnimationFrame(animateBackground);
 
 }
 
-animate();
+animateBackground();
 
 }
+
+/* =========================
+   PDF Preview Modal
+========================= */
+
+const pdfModal=document.getElementById("pdfModal");
+const pdfFrame=document.getElementById("pdfFrame");
+const closePdf=document.getElementById("closePdf");
+
+document.querySelectorAll(".previewBtn").forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+const pdf=btn.dataset.pdf;
+
+pdfFrame.src=pdf;
+
+pdfModal.style.display="block";
+
+document.body.style.overflow="hidden";
+
+});
+
+});
+
+function closePDF(){
+
+pdfModal.style.display="none";
+
+pdfFrame.src="";
+
+document.body.style.overflow="auto";
+
+}
+
+if(closePdf){
+
+closePdf.onclick=closePDF;
+
+}
+
+window.addEventListener("click",e=>{
+
+if(e.target===pdfModal){
+
+closePDF();
+
+}
+
+});
+
+window.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+
+closePDF();
+
+}
+
+});
 
 /* =========================
    Support Popup
@@ -155,22 +227,24 @@ if(openPayment){
 openPayment.onclick=()=>{
 
 paymentModal.style.display="block";
+
 document.body.style.overflow="hidden";
 
 };
 
 }
 
-function closeModal(){
+function closeSupport(){
 
 paymentModal.style.display="none";
+
 document.body.style.overflow="auto";
 
 }
 
 if(closePayment){
 
-closePayment.onclick=closeModal;
+closePayment.onclick=closeSupport;
 
 }
 
@@ -178,7 +252,7 @@ window.addEventListener("click",e=>{
 
 if(e.target===paymentModal){
 
-closeModal();
+closeSupport();
 
 }
 
@@ -188,7 +262,7 @@ window.addEventListener("keydown",e=>{
 
 if(e.key==="Escape"){
 
-closeModal();
+closeSupport();
 
 }
 
@@ -221,7 +295,7 @@ alert("UPI ID: 8668532705@ybl");
 }
 
 /* =========================
-   Fade Animation
+   Scroll Reveal Animation
 ========================= */
 
 const observer=new IntersectionObserver(entries=>{
@@ -231,6 +305,7 @@ entries.forEach(entry=>{
 if(entry.isIntersecting){
 
 entry.target.style.opacity="1";
+
 entry.target.style.transform="translateY(0)";
 
 }
@@ -242,9 +317,47 @@ entry.target.style.transform="translateY(0)";
 document.querySelectorAll("main section").forEach(sec=>{
 
 sec.style.opacity="0";
-sec.style.transform="translateY(40px)";
+sec.style.transform="translateY(35px)";
 sec.style.transition="all .8s ease";
 
 observer.observe(sec);
 
 });
+
+/* =========================
+   Resource Card Hover Glow
+========================= */
+
+document.querySelectorAll(".resource-card").forEach(card=>{
+
+card.addEventListener("mousemove",e=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+card.style.background=
+`radial-gradient(circle at ${x}px ${y}px,
+rgba(0,229,255,.12),
+rgba(255,255,255,.05))`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="rgba(255,255,255,.05)";
+
+});
+
+});
+
+/* =========================
+   Console Signature
+========================= */
+
+console.log("%cGovind Jadhav Portfolio",
+"color:#00E5FF;font-size:20px;font-weight:bold;");
+
+console.log("%cCybersecurity Engineer | DevSecOps | Application Security",
+"color:white;");
